@@ -105,11 +105,12 @@
             height: 25px;
             background-color: rgba(255, 255, 255, 0.5);
             animation: fall linear infinite;
+            top: -25px;
         }
 
         @keyframes fall {
             from {
-                transform: translateY(-20px);
+                transform: translateY(-100px);
             }
             to {
                 transform: translateY(100vh);
@@ -135,9 +136,27 @@
     <script src="script.js"></script>
 </div>
 
-<div class="raindrop" style="left: 10%; animation-duration: 5s;"></div>
-<div class="raindrop" style="left: 20%; animation-duration: 6s;"></div>
-<div class="raindrop" style="left: 30%; animation-duration: 4s;"></div>
+<script>
+    function createRaindrops() {
+        const numberOfRaindrops = 50;
+        const body = document.body;
+
+        for (let i = 0; i < numberOfRaindrops; i++) {
+            const raindrop = document.createElement('div');
+            raindrop.classList.add('raindrop');
+
+            const randomLeft = Math.random() * 100 + '%';
+            raindrop.style.left = randomLeft;
+
+            const randomDuration = (Math.random() * 3) + 3 + 's';
+            raindrop.style.animationDuration = randomDuration;
+
+            body.appendChild(raindrop);
+        }
+    }
+
+    createRaindrops();
+</script>
 
 </body>
 </html>
